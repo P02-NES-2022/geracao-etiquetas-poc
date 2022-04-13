@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Geração das Etiquetas | POC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .flex-center {
+          @apply flex items-center justify-center;
+        }
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      html,
+      body {
+        @apply h-full w-full;
+      }
+
+      input {
+        @apply focus-visible:outline-none;
+      }
+
+      .material-icons-outlined {
+        @apply flex-center;
+      }
+    </style>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "default-bg": "#024168",
+              "text-fade": "#99BBD0",
+              "text-placeholder": "#336B8E",
+              "default-border": "#2E688C",
+              "default-accent": "#52BD8F",
+              "accent-shade": "#369169",
+              "button-fade": "#407494",
+              "icon-fade": "#87B1CB",
+              "even-row": "#104F76",
+              "odd-row": "#0C496F",
+            },
+            keyframes: {
+              wiggle: {
+                "0%, 100%": { transform: "rotate(-1.5deg)" },
+                "50%": { transform: "rotate(1.5deg)" },
+              },
+            },
+            animation: {
+              wiggle: "wiggle .3s ease-in-out infinite",
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body>
+    <div class="w-full h-full bg-default-bg p-5">
+      <h1 class="text-white text-3xl font-semibold mb-5">Gerar Etiqueta</h1>
+
+      <form onsubmit="generate(event)" class="w-full">
+        <div class="mb-4 p-4 rounded-md border border-text-fade/10 w-fit">
+          <label for="tag" class="text-text-fade mr-2">Etiqueta</label>
+          <select
+            name="tag"
+            id="tag"
+            class="w-[20rem] h-full bg-transparent border-2 border-default-border px-3 py-1 placeholder:text-text-placeholder focus-visible:border-default-accent text-white"
+          ></select>
+        </div>
+
+        <div class="mb-4 p-4 rounded-md border border-text-fade/10 w-fit">
+          <label for="catalogNumber" class="text-text-fade mr-2"
+            >Número de catalogo</label
+          >
+          <input
+            id="catalogNumber"
+            type="text"
+            name="catalogNumber"
+            placeholder="ZUFMS-AMP13951"
+            value="ZUFMS-AMP13951"
+            class="w-[20rem] h-full bg-transparent border-2 border-default-border px-3 py-1 placeholder:text-text-placeholder focus-visible:border-default-accent text-white"
+          />
+        </div>
+        <div class="mb-4 p-4 rounded-md border border-text-fade/10 w-fit">
+          <label for="order" class="text-text-fade mr-2">Ordem</label>
+          <input
+            id="order"
+            type="text"
+            name="order"
+            placeholder="Anura"
+            value="Anura"
+            class="w-[20rem] h-full bg-transparent border-2 border-default-border px-3 py-1 placeholder:text-text-placeholder focus-visible:border-default-accent text-white"
+          />
+        </div>
+        <div class="mb-4 p-4 rounded-md border border-text-fade/10 w-fit">
+          <label for="family" class="text-text-fade mr-2">Família</label>
+          <input
+            id="family"
+            type="text"
+            name="family"
+            placeholder="Leptodactylidae"
+            value="Leptodactylidae"
+            class="w-[20rem] h-full bg-transparent border-2 border-default-border px-3 py-1 placeholder:text-text-placeholder focus-visible:border-default-accent text-white"
+          />
+        </div>
+        <div class="mb-4 p-4 rounded-md border border-text-fade/10 w-fit">
+          <label for="artificial:subfamily" class="text-text-fade mr-2"
+            >Subfamília</label
+          >
+          <input
+            id="artificial:subfamily"
+            type="text"
+            name="artificial:subfamily"
+            placeholder="Leptodactylinae"
+            value="Leptodactylinae"
+            class="w-[20rem] h-full bg-transparent border-2 border-default-border px-3 py-1 placeholder:text-text-placeholder focus-visible:border-default-accent text-white"
+          />
+        </div>
+
+        <button
+          type="submit"
+          class="bg-default-accent w-32 transition-all hover:drop-shadow-xl hover:bg-accent-shade drop-shadow-md p-3 rounded-md flex items-center justify-center text-white font-semibold"
+        >
+          Gerar
+        </button>
+      </form>
+    </div>
+
+    <script type="text/javascript" src="index.js"></script>
+  </body>
+</html>
